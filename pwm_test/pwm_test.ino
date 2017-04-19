@@ -10,13 +10,6 @@
 #define ch5_rc_InputPin A4
 #define ch6_rc_InputPin A5
 
-
-#define ch1_output_to_flight_control D3
-#define ch1_output_to_flight_control D4
-#define ch1_output_to_flight_control D5
-#define ch1_output_to_flight_control D6
-#define ch1_output_to_flight_control D7
-
 //how much input channeds to be used
 uint8_t maximum_channels = 6;
 
@@ -40,14 +33,14 @@ void setup()
 }
 void loop()
 {
+	read_rc_input();
 	for(uint8_t channel; channel <= maximum_channels; channel++){
-	Serial.print("channel ");
-  Serial.print(channel);
-  Serial.print(":  ");
-	Serial.println(rc_input_pwm_value_raw[channel]);
+		Serial.print("channel ");
+		Serial.print(channel);
+		Serial.print("PWM:  ");
+		Serial.println(rc_input_pwm_value_raw[channel]);
 	}
- delay(200);
-
+	delay(500);
 }
 
 void rc_input_setup(uint8_t maximum_channels){
